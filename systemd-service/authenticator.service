@@ -1,0 +1,15 @@
+[Unit]
+Description=Nginx authentication service
+After=network.target
+
+[Service]
+User=gimb-authenticator
+Group=www-data
+WorkingDirectory=/srv/services/authenticator
+Environment="PATH=/srv/services/authenticator/.venv/bin"
+ExecStart=/srv/services/authenticator/.venv/bin/uwsgi --ini authenticator.ini
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+

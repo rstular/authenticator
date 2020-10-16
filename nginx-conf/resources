@@ -1,0 +1,90 @@
+server {
+
+	set $base /srv/www/resources/;
+	root $base/;
+
+	# Enable modsecurity
+	#include snippets/modsecurity.conf;
+
+	# Include security snippet
+	include snippets/security.conf;
+
+	# Include additional config
+	include snippets/general.conf;
+
+	# Logging
+	access_log /var/log/nginx/resources.gimb.tk.access.log;
+	error_log /var/log/nginx/resources.gimb.tk.error.log warn;
+
+	index /_h5ai/public/index.php;
+
+	server_name resources.gimb.tk;
+
+	auth_request /api/auth/verify/resources;
+
+	location = /api/auth/verify/resources {
+		internal;
+		
+		proxy_set_header Content-Length "";
+		proxy_set_header X-Original-URI $request_uri;
+		proxy_set_header X-Original-Host $http_host;
+		proxy_set_header X-Forwarded-Proto $scheme;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+		proxy_pass_request_body off;
+		proxy_pass https://auth.resources.gimb.tk;
+		
+	}
+
+	error_page 401 = @error401;
+	location @error401 {
+		return 302 https://auth.resources.gimb.tk/login?realm=resources;
+	}
+
+	location / {
+		# First attempt to serve request as file, then
+		# as directory, then fall back to displaying a 404.
+		try_files $uri $uri/ =404;
+	}
+
+	location ~ /_h5ai/(?!public) {
+		deny all;
+	}
+
+	location ^~ /_h5ai/public/cache/ {
+		try_files $uri $uri/ =404;
+	}
+
+	# pass PHP scripts to FastCGI server
+	#
+	location ~ \.php$ {
+		include snippets/php_fastcgi.conf;
+	}
+
+
+    listen [::]:443 ssl ipv6only=on; # managed by Certbot
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/resources.gimb.tk/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/resources.gimb.tk/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+
+
+
+server {
+    if ($host = resources.gimb.tk) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+
+    server_name resources.gimb.tk;
+
+    listen [::]:80;
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}

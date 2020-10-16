@@ -1,0 +1,13 @@
+{
+    "resources": {
+        "prefix": "resources",
+        "redirect": "https://resources.gimb.tk",
+	"logout_redirect": "https://resources.gimb.tk",
+        "domain": "resources.gimb.tk",
+        "token": {
+            "length": 256,
+            "expiration": 259200
+        },
+        "auth_endpoint": "https://auth.gimb.tk/"
+    }
+}

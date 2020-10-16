@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>GimSIS Login</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="https://unpkg.com/@mountable/spinners@0.0.25/dist/mSpinnerSwirl.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+			<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
+				<form class="login100-form validate-form flex-sb flex-w" id="loginform">
+
+					<div id="loginview" class="boxcenter">
+						<span class="login100-form-title p-b-33">
+							Sign In
+						</span>
+
+						<div id="errorbox" class="p-b-20 hiddenitem">
+							<span id="errortext" class="txt1 text-danger"></span>
+						</div>
+						
+						<div class="p-b-9">
+							<span class="txt1">
+								GimSIS Username
+							</span>
+						</div>
+						<div class="wrap-input100 validate-input" data-validate = "Username is required">
+							<input class="input100" type="text" name="username" id="usernameinput" >
+							<span class="focus-input100"></span>
+						</div>
+						
+						<div class="p-t-13 p-b-9">
+							<span class="txt1">
+								GimSIS Password
+							</span>
+						</div>
+						<div class="wrap-input100 validate-input" data-validate = "Password is required">
+							<input class="input100" type="password" name="pass" id="passwordinput" >
+							<span class="focus-input100"></span>
+						</div>
+
+						<div class="container-login100-form-btn m-t-17 p-b-20">
+							<button id="login-button" class="login100-form-btn">
+								Sign In
+							</button>
+						</div>
+					</div>
+
+					<div id="loadingview" class="boxcenter hiddenitem">
+						<span class="login100-form-title p-b-30">
+							Logging you in...
+						</span>
+						<div class="tipbox">
+							<i class="m-spinner--swirl"></i>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+	
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+</body>
+</html>

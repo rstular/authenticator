@@ -1,0 +1,20 @@
+{
+    "redis": {
+        "host": "localhost",
+        "port": 6379,
+	"database_id": 0
+    },
+    "logging": {
+        "name": "Authenticator",
+        "rsyslog": {
+            "enable": false,
+            "level": "DEBUG",
+            "host": "83.212.82.75",
+            "port": 514
+        },
+        "stdout": {
+            "enable": true,
+            "level": "INFO"
+        }
+    }
+}
