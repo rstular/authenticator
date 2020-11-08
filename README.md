@@ -1,4 +1,4 @@
-# nginx-authenticator-gimb
+# sample-nginx-auth-request
 Python implementation of ngx_http_auth_request_module.
 
 The API exposes 3 endpoints:
